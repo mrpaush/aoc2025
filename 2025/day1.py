@@ -1,5 +1,5 @@
 def dayOnePartOne():
-    with open("day1-1.txt", "r") as f:
+    with open("inputs/day1-1.txt", "r") as f:
         score, start = 0, 50
         for line in f.read().splitlines():
             if line[0] == "L":
@@ -12,7 +12,7 @@ def dayOnePartOne():
         print(score)
 
 def dayOnePartTwo():
-    with open("day1-1.txt", "r") as f:
+    with open("inputs/day1-1.txt", "r") as f:
         score, start = 0, 50
         for line in f.read().splitlines():
             start = (100 - start) % 100 if line[0] == "L" else start
