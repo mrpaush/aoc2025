@@ -1,5 +1,5 @@
 def day2():
-    with open("inputday2.txt") as f:
+    with open("inputs/day2.txt") as f:
         count = 0
         for line in f.read().split(","):
             dic = line.split("-")

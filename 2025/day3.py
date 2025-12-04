@@ -1,5 +1,5 @@
 def day3pt1():
-    with open("input3.txt") as f:
+    with open("inputs/day3.txt") as f:
         score = 0
         for line in f.read().splitlines():
             one, two = "0", "0"
@@ -15,7 +15,7 @@ def day3pt1():
         print(score)
 
 def day3pt2():
-    with open("input3.txt") as f:
+    with open("inputs/day3.txt") as f:
         score = 0
         for line in f.read().splitlines():
             battery = "000000000000"
