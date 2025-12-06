@@ -20,7 +20,6 @@ def day5():
                 if int(key[0]) <= int(value[0]) <= int(key[1]):
                     score+=1
                     break
-        # score += 1 if resultKeys[n+1][0] > value > resultKeys[n][1] for value in resultValues
         print(score)
 
 def day5pt2():
@@ -41,15 +40,32 @@ def day5pt2():
         resultKeys.sort(key= lambda item: item[0])
         newRanges.append(resultKeys[0])
         for key in resultKeys:
-            for addedKey in newRanges:
-                if key[0] > addedKey[1]:
+            i = len(newRanges)-1
+            if key[0] < newRanges[i][0]:
+                if key[1] < newRanges[i][0]:
                     newRanges.append(key)
-                if key[0] < addedKey[0]:
-                    if key[1] > addedKey[1]:
-                        newRanges.append(key)
+                elif key[1] >= newRanges[i][1]:
+                    newRanges.append(key)
+                    newRanges.pop(i)
+                elif key[1] >= newRanges[i][0]:
+                    newRanges.append((key[0], newRanges[i][1]))
+                    newRanges.pop(i)
+            elif key[0] == newRanges[i][0]:
+                if key[1] > newRanges[i][1]:
+                    newRanges.append(key)
+                    newRanges.pop(i)
+            elif key[0] > newRanges[i][0]:
+                if key[0] > newRanges[i][1]:
+                    newRanges.append(key)
+                elif key[1] > newRanges[i][1]:
+                    newRanges.append((newRanges[i][0], key[1]))
+                    newRanges.pop(i)
+            elif key[0] == newRanges[i][1]:
+                newRanges.append((newRanges[i][0], key[1]))
+                newRanges.pop(i)
 
         for newKeys in newRanges:
-            score += newKeys[0] + newKeys[1]
+            score += newKeys[1] - newKeys[0] + 1
         # score += 1 if resultKeys[n+1][0] > value > resultKeys[n][1] for value in resultValues
         print(score)
 
